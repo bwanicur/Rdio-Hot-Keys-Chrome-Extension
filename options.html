@@ -1,27 +1,26 @@
 <html>
 <head><title>Rdio Player Control's Options</title></head>
-<script src="jquery-1.7.2.js"></script>
 <script type="text/javascript">
 function getKeyCodes(){
     setDefaultValues();
-    jQuery('input[name="fast_forward_button"]').keypress(function(e){
-      localStorage['rdio_player_fast_forward_key'] = e.code;
-    });
-    jQuery('input[name="rewind_button"]').keypress(function(e){
-      localStorage['rdio_player_rewind_key'] = e.code;
-    });
-    jQuery('input[name="pause_button"]').keypress(function(e){
-      localStorage['rdio_player_pause_key'] = e.code;
-    });
-    jQuery('select[name="num_seconds"]').change(function(e){
-      localStorage['num_seconds'] = e.val();
-    });
+    document.getElementsByName("fast_forward_button")[0].onkeydown = function(e){
+      localStorage['rdio_player_fast_forward_key'] = e.keyCode;
+    }
+    document.getElementsByName("rewind_button")[0].onkeydown = function(e){
+      localStorage['rdio_player_rewind_key'] = e.keyCode;
+    }
+    document.getElementsByName("pause_button")[0].onkeydown = function(e){
+      localStorage['rdio_player_pause_key'] = e.keyCode;
+    };
+    document.getElementsByName("num_seconds")[0].onchange = function(e){
+      localStorage['num_seconds'] = e.value;
+    };
 }
 function setDefaultValues(){
-  jQuery('input[name="fast_forward_button"]').val(String.fromCharCode(localStorage['rdio_player_fast_forward_key']));
-  jQuery('input[name="rewind_button"]').val(String.fromCharCode(localStorage['rdio_player_rewind_key']));
-  jQuery('input[name="pause_button"]').val(String.fromCharCode(localStorage['rdio_player_pause_key']));
-  jQuery('select[name="num_seconds"]').val(localStorage['num_seconds']);
+  document.getElementsByName("fast_forward_button")[0].value = String.fromCharCode(localStorage['rdio_player_fast_forward_key']);
+  document.getElementsByName("rewind_button")[0].value = String.fromCharCode(localStorage['rdio_player_rewind_key']);
+  document.getElementsByName("pause_button")[0].value = String.fromCharCode(localStorage['rdio_player_pause_key']);
+  document.getElementsByName("num_seconds")[0].value = localStorage['num_seconds'];
 }
 </script>
 <body onload="getKeyCodes()">

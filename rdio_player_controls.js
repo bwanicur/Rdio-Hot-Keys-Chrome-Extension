@@ -12,17 +12,17 @@ var ChromeExtensionRdioPlayerControls = function(){
       fastForwardKeyCode = null;
       pauseKeyCode = null;
       numberOfSeconds = null || 5;
-      jQuery(window).keypress(function(e){
-        if(e.code == rewindKeyCode){
+      window.onkeydown = function(e){
+        if(e.keyCode == rewindKeyCode){
           ChromeExtensionRdioPlayerControls._rewind();
         }
-        else if(e.code == fastForwardKeyCode){
+        else if(e.keyCode == fastForwardKeyCode){
           ChromeExtensionRdioPlayerControls._fastForward();
         }
-        else if(e.code == pauseKeyCode){
+        else if(e.keyCode == pauseKeyCode){
           ChromeExtensionRdioPlayerControls._pause();
         }
-      })
+      }
     },
   
     _rewind:function(){
