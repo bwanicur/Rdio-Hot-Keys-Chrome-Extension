@@ -1,0 +1,57 @@
+<html>
+<head><title>Rdio Player Control's Options</title></head>
+<script src="jquery-1.7.2.js"></script>
+<script type="text/javascript">
+function getKeyCodes(){
+    setDefaultValues();
+    jQuery('input[name="fast_forward_button"]').keypress(function(e){
+      localStorage['rdio_player_fast_forward_key'] = e.code;
+    });
+    jQuery('input[name="rewind_button"]').keypress(function(e){
+      localStorage['rdio_player_rewind_key'] = e.code;
+    });
+    jQuery('input[name="pause_button"]').keypress(function(e){
+      localStorage['rdio_player_pause_key'] = e.code;
+    });
+    jQuery('select[name="num_seconds"]').change(function(e){
+      localStorage['num_seconds'] = e.val();
+    });
+}
+function setDefaultValues(){
+  jQuery('input[name="fast_forward_button"]').val(String.fromCharCode(localStorage['rdio_player_fast_forward_key']));
+  jQuery('input[name="rewind_button"]').val(String.fromCharCode(localStorage['rdio_player_rewind_key']));
+  jQuery('input[name="pause_button"]').val(String.fromCharCode(localStorage['rdio_player_pause_key']));
+  jQuery('select[name="num_seconds"]').val(localStorage['num_seconds']);
+}
+</script>
+<body onload="getKeyCodes()">
+<div class="input_div">
+  <label for="fast_forward_button">Fast-Forward Hot Key</label>
+  <input name="fast_forward_button" />
+</div>
+<div class="input_div">
+  <label for="rewind_button">Rewind Hot Key</label>
+  <input name="rewind_button" />
+</div>
+<div class="input_div">
+  <label for="pause_button">Pause Hot Key</label>
+  <input name="pause_button" />
+</div>
+<div class="input_div">
+  <label for="num_seconds">Choose Number of Seconds</label>
+  <select name="num_seconds" >
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+</div>
+<br>
+</body>
+</html>
