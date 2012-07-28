@@ -1,9 +1,11 @@
 {
   "name": "Rdio Player Controls",
+  "manifest_version": 2,
   "version": "0.1",
   "description": "Rewind, Fast-Forward, and Pause for Rdio Player",
-  // Do we need permissions ?
-  // "permissions": ["http://*.google.com/", "https://*.google.com/"],
+  "background": {
+    "scripts": ["background.js"]
+  }
   "options_page": "options.html",
   "content_scripts": [
       {
