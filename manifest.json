@@ -2,14 +2,19 @@
   "name": "Rdio Player Controls",
   "manifest_version": 2,
   "version": "0.1",
+  "icons": { 
+    "128": "rdio_player_controls.png",
+    "48": "rdio_player_controls.png",
+    "16": "rdio_player_controls.png"        
+  },
   "description": "Rewind, Fast-Forward, and Pause for Rdio Player",
   "background": {
     "scripts": ["background.js"]
-  }
+  },
   "options_page": "options.html",
   "content_scripts": [
       {
-        "matches": ["http://*.rdio.com*"],
+        "matches": ["http://*.rdio.com/*"],
         "js": ["rdio_player_controls.js"]
       }
     ],

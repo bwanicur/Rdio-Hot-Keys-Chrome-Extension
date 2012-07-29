@@ -1,40 +1,37 @@
 <html>
-<head><title>Rdio Player Control's Options</title></head>
-<script type="text/javascript">
-function getKeyCodes(){
-    setDefaultValues();
-    document.getElementsByName("fast_forward_button")[0].onkeydown = function(e){
-      localStorage['rdio_player_fast_forward_key'] = e.keyCode;
-    }
-    document.getElementsByName("rewind_button")[0].onkeydown = function(e){
-      localStorage['rdio_player_rewind_key'] = e.keyCode;
-    }
-    document.getElementsByName("pause_button")[0].onkeydown = function(e){
-      localStorage['rdio_player_pause_key'] = e.keyCode;
-    };
-    document.getElementsByName("num_seconds")[0].onchange = function(e){
-      localStorage['num_seconds'] = e.value;
-    };
-}
-function setDefaultValues(){
-  document.getElementsByName("fast_forward_button")[0].value = String.fromCharCode(localStorage['rdio_player_fast_forward_key']);
-  document.getElementsByName("rewind_button")[0].value = String.fromCharCode(localStorage['rdio_player_rewind_key']);
-  document.getElementsByName("pause_button")[0].value = String.fromCharCode(localStorage['rdio_player_pause_key']);
-  document.getElementsByName("num_seconds")[0].value = localStorage['num_seconds'];
-}
-</script>
-<body onload="getKeyCodes()">
-<div class="input_div">
-  <label for="fast_forward_button">Fast-Forward Hot Key</label>
-  <input name="fast_forward_button" />
-</div>
-<div class="input_div">
-  <label for="rewind_button">Rewind Hot Key</label>
-  <input name="rewind_button" />
-</div>
+<head><title>Rdio Player Control's Options</title>
+<script src="options.js"></script>
+<style>
+  .input_div label {
+    float: left;
+    width: 200px;
+    margin-right: 20px;
+  }
+  .input_div input {
+    width: 25px;
+  }
+  .error_msg{
+    display: none;
+    color: red;
+  }
+</style>
+</head>
+<body>
+  <!-- TODO: validation warning.  only certain keys are allowed -->
+  <div class="input_div">
+    <label for="rewind_button">Rewind Hot Key</label>
+    <input name="rewind_button" />
+    <span class="error_msg" id="rewind_input_error_msg">That key choice is invalid</span>
+  </div>
 <div class="input_div">
   <label for="pause_button">Pause Hot Key</label>
   <input name="pause_button" />
+  <span class="error_msg" id="pause_input_error_msg">That key choice is invalid</span>
+</div>
+<div class="input_div">
+  <label for="fast_forward_button">Fast-Forward Hot Key</label>
+  <input name="fast_forward_button" />
+  <span class="error_msg" id="fase_forward_input_error_msg">That key choice is invalid</span>
 </div>
 <div class="input_div">
   <label for="num_seconds">Choose Number of Seconds</label>
