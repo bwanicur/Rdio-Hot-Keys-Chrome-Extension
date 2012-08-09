@@ -1,7 +1,7 @@
 {
   "name": "Rdio Player Controls",
   "manifest_version": 2,
-  "version": "0.1",
+  "version": "1.0",
   "icons": { 
     "128": "rdio_player_controls.png",
     "48": "rdio_player_controls.png",
@@ -15,7 +15,8 @@
   "content_scripts": [
       {
         "matches": ["http://*.rdio.com/*"],
-        "js": ["rdio_player_controls.js"]
+        "js": ["rdio_player_controls.js"],
+        "run_at": "document_end"
       }
     ],
   "page_action": {

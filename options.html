@@ -2,9 +2,29 @@
 <head><title>Rdio Player Control's Options</title>
 <script src="options.js"></script>
 <style>
+  body{
+    font-family: 'Trebuchet MS', 'Sans-Serif';
+  }
+  .container {
+    width: 750px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #EDF1F3;
+    margin: auto;
+    margin-top: 50px;
+  }
+  .container input{
+    border-radius: 3px;
+  }
+  .instructions_message{
+    margin: 10 0 20 0;
+  }
+  .emphasis {
+    color: #801E03;
+  }
   .input_div label {
     float: left;
-    width: 200px;
+    width: 210px;
     margin-right: 20px;
   }
   .input_div input {
@@ -17,37 +37,48 @@
 </style>
 </head>
 <body>
-  <!-- TODO: validation warning.  only certain keys are allowed -->
-  <div class="input_div">
-    <label for="rewind_button">Rewind Hot Key</label>
-    <input name="rewind_button" />
-    <span class="error_msg" id="rewind_input_error_msg">That key choice is invalid</span>
+  <div class="container">
+    <h2>Rdio Player Extension - Player Control Hot Keys</h2>
+    <div class="instructions_message">
+      <p>
+        Please select Hot Keys for Rewind, Fast-Forward, and Pause.<br />  
+        <strong class="emphasis">Only character keys may be used as Hot Keys.  Function, tab, esc, etc... keys are forbidden.</strong>
+      </p>
+      <p>
+        These Hot Keys will only work "globally" when the Tab or Window of the chrome browser is active on the Rdio website.
+      </p>
+    </div>
+    <div class="input_div">
+      <label for="rewind_button">Rewind Hot Key:</label>
+      <input name="rewind_button" />
+      <span class="error_msg" id="rewind_input_error_msg">That key choice is invalid</span>
+    </div>
+    <div class="input_div">
+      <label for="pause_button">Pause Hot Key:</label>
+      <input name="pause_button" />
+      <span class="error_msg" id="pause_input_error_msg">That key choice is invalid</span>
+    </div>
+    <div class="input_div">
+      <label for="fast_forward_button">Fast-Forward Hot Key:</label>
+      <input name="fast_forward_button" />
+      <span class="error_msg" id="fast_forward_input_error_msg">That key choice is invalid</span>
+    </div>
+    <div class="input_div">
+      <label for="num_seconds">Number of Seconds:</label>
+      <select name="num_seconds">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <br />
   </div>
-<div class="input_div">
-  <label for="pause_button">Pause Hot Key</label>
-  <input name="pause_button" />
-  <span class="error_msg" id="pause_input_error_msg">That key choice is invalid</span>
-</div>
-<div class="input_div">
-  <label for="fast_forward_button">Fast-Forward Hot Key</label>
-  <input name="fast_forward_button" />
-  <span class="error_msg" id="fase_forward_input_error_msg">That key choice is invalid</span>
-</div>
-<div class="input_div">
-  <label for="num_seconds">Choose Number of Seconds</label>
-  <select name="num_seconds" >
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-  </select>
-</div>
-<br>
 </body>
 </html>

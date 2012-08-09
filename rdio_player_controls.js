@@ -26,18 +26,24 @@ var ChromeExtensionRdioPlayerControls = function(){
         else if(e.keyCode == fastForwardKeyCode){
           ChromeExtensionRdioPlayerControls._fastForward();
         }
-        else if(e.keyCode == playPause.KeyCode){
-          if(playPause.state != 'pause'){
-            playPause.state = 'play';
-            ChromeExtensionRdioPlayerControls._pause();
-          }
-          else {
+        else if(e.keyCode == playPause.hotKeyCode){
+          if(playPause.state == 'pause'){
             playPause.state = 'play';
             ChromeExtensionRdioPlayerControls._play();
+          }
+          else {
+            playPause.state = 'pause';
+            ChromeExtensionRdioPlayerControls._pause();
           }
         }
       }
     },
+    
+    // TODO: wouldn't it be nice if we had access to this global "R" object ?  Chrome extensions run in a "isolated world".
+    //       we can only interact with elements of the DOM, no access to the page's JS objects.          
+    //       we need to re-create these functions below by interacting with the Flash player directly... ugggg!
+    //       lesson learned: rtfm, before writing code!
+    
   
     _rewind:function(){
       R.Services.Player.seek(R.Services.Player.model.get('position') - numberOfSeconds);
@@ -58,4 +64,4 @@ var ChromeExtensionRdioPlayerControls = function(){
   
 }();
 
-ChromeExtensionRdioPlayerControls.init();
+window.onload = ChromeExtensionRdioPlayerControls.init;
